@@ -11,12 +11,12 @@ class ADGGoogleMaps:
         self.google_api_secret = google_api_secret
         self.address = address
         self.gmaps = googlemaps.Client(key=self.google_api_secret)
-        self.geocode_result = gmaps.geocode(self.address)
-        self.json_format = json.dumps(geocode_result)
+        self.geocode_result = self.gmaps.geocode(self.address)
+        self.json_format = json.dumps(self.geocode_result)
         self.results = []
 
     def GetCordsFromAddress(self):
-        cords = find_values('location', self.json_format)
+        cords = self.findvalues('location', self.json_format)
         locationdict = cords[0]
         cords = list(locationdict.values())
         return cords
@@ -24,7 +24,7 @@ class ADGGoogleMaps:
     def findvalues(self, id, json_repr):
         results = []
 
-        def _decode_dict(self, a_dict):
+        def _decode_dict(a_dict):
             try:
                 results.append(a_dict[id])
             except KeyError:
