@@ -34,5 +34,5 @@ class ADGGoogleMaps:
         return results
 
     def ReturnMap(self,size):
-        mapit = folium.Map( location=self.GetCordsFromAddress,zoom_start = size)
+        mapit = folium.Map( location=self.GetCordsFromAddress(),zoom_start = size)
         return mapit
